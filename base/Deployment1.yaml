@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Deployment
+  labels:
+    app: jenkins
+Spec: 
+  minReadySeconds: 06
+  replicas: 03
+  selector: 
+    matchLabels:
+      app: jenkins 
+  strategy:
+    rollingUpdate: 
+      maxSurge: 50 %
+      maxUnavailable: 50%
+    type: "RollingUpdate"
+    template:
+      metadata:
+        name: myapp
+        labels: 
+          app: jenkins
+      spec:
+        containers:
+          - name: myapp
+            image: shaikkhajaibrahim/dashboardservice:1.0.0
+            ports:
+              - name: jenkins-container
+                containerPort: 8080
+                protocol: TCP
+      
+        
+        
+
+
+    
+
