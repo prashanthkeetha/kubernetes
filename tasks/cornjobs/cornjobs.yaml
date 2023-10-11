@@ -1,0 +1,31 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: pod-cornjob
+spec: 
+  schedule: "00 11 * * *"
+  jobTemplate:
+    metadata:
+      name: podjob
+      labels:
+        purpose: execution
+    spec:
+      backoffLimit: 2
+      selector:
+        matchLabels:
+          purpose: execution
+      template:
+        metadata:
+          name: pod
+        spec:
+          containers:
+            - name: pod
+              image: alpine
+              command:
+                - sleep
+                - 30s
+              ports:
+                - containerPort: 80
+                  name: alipinepod
+                  protocol: "TCP"

@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1	
+kind: DaemonSet
+metadata: 
+  name: jenkins-ds
+spec:
+  minReadySeconds: 02
+  selector:
+    matchLabels:
+      app: jenkins
+      env: qa
+  template:
+    metadata: 
+      labels:
+        app: jenkins
+        env: qa
+      spec:
+        containers:
+          - image: jenkins/jenkins
+        livenessProbe:
+          httpGet:
+            port: 27281
+        ports:
+          - containerPort: 80
+            protocol: TCP
+

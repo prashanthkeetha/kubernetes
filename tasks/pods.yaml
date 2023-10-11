@@ -1,0 +1,37 @@
+--- 
+apiVersion: v1
+kind: pod
+metadata:
+   name: pods
+   labels:
+     app: jenkins
+spec:
+  - containers:
+      name: jenkins-container
+      image: jenkins/jenkins
+      ports: 
+        - containerPort: 8080
+          protocol: TCP
+
+---
+
+apiversion: v1
+kind: pod
+metadata:
+  name: workload
+  labels:
+    name: container
+sepc:
+  activeDeadlineSeconds: 05
+  - containers:
+      name: pod-workload 
+      image: sonarqube
+      ports:
+        - containerPort: 9000
+          protocal: TCP
+  - containers:
+      name: pod-workloads
+      image: jenkins/jenkins
+      ports:
+        - containerPort: 8080
+          protocal: TCP

@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: mysql-rs
+spec:
+  minReadySeconds: 02
+  replicas: 03
+  selector:
+    matchLabels:
+      app: mysql
+      env: dev
+  template:
+    metadata:
+      name: mysql-rs
+      labels:
+        app: mysql
+        env: dev
+    spec:
+      containers:
+        - image: mysql:8.0
+          name: mysql-container
+          ports:
+            - containerPort: 3306
+              name: mysql-rs
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              port: 26526
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: mysql-rs
+spec: 
+  type: LoadBalancer
+  selector:
+    name: mysql
+  ports:
+    - name: mysql-port
+      port: 3306
+      targetPort: 26526
+      protocol: TCP
+
+
+
+
+      

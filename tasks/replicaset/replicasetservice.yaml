@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ngnix-rs
+  labels:
+    name: ngnix-rs
+spec:
+  minReadySeconds: 03
+  replicas: 05
+  selector:
+    matchLabels:
+      app: ngnix-rs
+  template:
+    metadata:
+      name: ngnix-rs
+      labels:
+        app: ngnix-rs
+    spec: 
+      containers:
+        - image: ngnix
+          name: ngnix-rs
+          ports:
+            - containerPort: 80
+              name: ngnix-rs
+              protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: ngnix-rs
+  labels: 
+    - name: ngnix-rs
+spec:
+  type: ClusterIP
+  ports: 
+    - port: 80
+      targetPort: 25200
+      protocol: TCP
+ 

@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod
+  labels: 
+    app: pod1
+spec:
+  - containers: 
+      name: sonarqube
+      image: sonarqube
+    ports:
+      - name: sonarqube
+        containerPort: 8080
+        protocol: TCP

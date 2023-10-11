@@ -1,0 +1,14 @@
+---
+apiversion: v1
+kind: Pod
+metadata:
+  name: mysqlconfig-map
+spec:
+  containers:
+    - name: mysqlconfig-map
+      image: mysql:8
+      envFrom:
+        - name: mysqlconfigmap
+  ports:
+    - name: mysqlconfig-map 
+      containerPort: 3306
