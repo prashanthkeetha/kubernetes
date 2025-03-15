@@ -29,6 +29,14 @@ _______________________________________________________________________________
 * Labels: Labels are used to specify the particular information about the objects(pods),the lables are specified for the pods.
           by using labels we get the attributes of the each pod by using lables we search the pod information
 
+_______________________________________________________________________________________________________
+# KubeConfig Context
+                    KubeConfig context is a configuration in Kubeconfig file that determines which kubernetes cluster, user credentinals, and namespace kubectl 
+                    should use for executing commands.
+                    -> It acts as a profile that allows users to switch between multiple Kubernetes environment easily. 
+
+-> The kubeconfig should be configured in the home path of ~/.Kube/config 
+
 
 _____________________________________________________________________________________
 Using nodes on each node you need to install docker.
