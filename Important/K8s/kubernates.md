@@ -17,6 +17,14 @@ controller- this ensures that the desire state is maintained
 container runtime: this is a technology which runs containers in the node
 kube- proxy: ths is responsible for networking.
 kubelet: Agent that runs on nodes with is waiting for master instructions.
+___________________________________________________________________________
+# KubeConfig Context
+                    KubeConfig context is a configuration in Kubeconfig file that determines which kubernetes cluster, user credentinals, and namespace kubectl 
+                    should use for executing commands.
+                    -> It acts as a profile that allows users to switch between multiple Kubernetes environment easily. 
+
+-> The kubeconfig should be configured in the home path of ~/.Kube/config path
+ 
 _______________________________________________________________________________
 * Selector: it is used to identify the objects
 * Labels: Labels are used to specify the particular information about the objects(pods),the lables are specified for the pods.
